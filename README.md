@@ -1,12 +1,3 @@
-Hi!!
+i write some useful scripts for roblox and upload them right here
 
-I write some funny and useful scripts for roblox and upload them right here!
-
-How do i make that?
-- I write the main script logic, UI (if there is even UI lol), and everything myself, and it is 100% handwritten.
-- Then i let AI polish my script to
-	→ Clean bugs
-	→ Optimize perfomance
-	→ Make the code cleaner (i'm not sure about ts 💀💀)
-
-In result my scripts are stable and fast (probably bro idk 😩😩)
+i write the main script logic, UI (if there is even UI), and everything myself, and it is 100% handwritten. I also optimize the code by myself (before i have used AI to do that sometimes, but now I'm trying to write full code without any AI help)
