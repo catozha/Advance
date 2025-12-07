@@ -63,19 +63,20 @@ end
 
 -- UI
 local Win = Lib.new({
-    name = "Orbit"
+    name = "Orbit",
+	mode = "tabs"
 })
 
-Win:Label("Selector")
+Win:Tab("Selector")
 
-Win:Input("Nickname...", function(txt)
+Win:Input("Target username...", function(txt)
     local found = getplr(txt)
     if found then
         trg = found
     end
 end)
 
-Win:Label("Controls")
+Win:Tab("Controls")
 
 Win:Toggle("Enable Orbit", function(stt)
     enb = stt
@@ -89,6 +90,8 @@ Win:Toggle("Enable Orbit", function(stt)
         pcall(function() RS:UnbindFromRenderStep("looped") end)
     end
 end)
+
+Win:Isolate()
 
 Win:Slider("Distance", 2, 20, 5, function(val)
     rad = val
