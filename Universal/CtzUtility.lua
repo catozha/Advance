@@ -170,52 +170,49 @@ local Win = Lib.new({
 	name = "Ctz <b>Utility</b>",
 	key = Enum.KeyCode.RightShift,
 	size = UDim2.fromOffset(450, 240),
-	aspeed = 0.4,
-    mode = "tabs"
+	aspeed = 0.4
 })
 
-Win:Tab("Flight")
+local flyToggle, speedToggle
 
-Win:Toggle("Enable Fly", function(LibState)
-	if LibState then
+local FlightTab = Win:Tab("Flight")
+
+flyToggle = FlightTab:Toggle("Enable Fly", false, function(state)
+	if state then
 		sfly(true) 
 	else
 		nofly()
 	end
 end)
 
-Win:Slider("Fly Speed", 1, 10, 1, function(LibVal)
-	vflyspeed = LibVal
+FlightTab:Slider("Fly Speed", 1, 10, 1, function(val)
+	vflyspeed = val
 end)
 
-Win:Tab("Movement")
+local MovementTab = Win:Tab("Movement")
 
-Win:Toggle("Enable Speedboost", function(LibState)
-	spdenabled = LibState
-	if not LibState and LP.Character then
+speedToggle = MovementTab:Toggle("Enable Speedboost", false, function(state)
+	spdenabled = state
+	if not state and LP.Character then
 		local h = LP.Character:FindFirstChild("Humanoid")
 		if h then h.WalkSpeed = 16 end
 	end
 end)
 
-Win:Slider("Walk Speed", 10, 500, 35, function(LibVal)
-	wsval = LibVal
+MovementTab:Slider("Walk Speed", 10, 500, 35, function(val)
+	wsval = val
 end)
 
-Win:Tab("Binds")
+local BindsTab = Win:Tab("Binds")
 
-Win:Keybind("Toggle Fly", Enum.KeyCode.F, function()
-    local currentState = not flying
-    if currentState then
-        sfly(true)
-    else
-        nofly()
-    end
+BindsTab:Keybind("Toggle Fly", Enum.KeyCode.F, function()
+	local newState = not flying
+	flyToggle:Set(newState)
 end)
 
-Win:Keybind("Toggle Speedhack", Enum.KeyCode.V, function()
-    spdenabled = not spdenabled
-    if LP.Character and LP.Character:FindFirstChild("Humanoid") then
-        LP.Character.Humanoid.WalkSpeed = spdenabled and wsval or 16
-    end
+BindsTab:Keybind("Toggle Speedhack", Enum.KeyCode.V, function()
+	local newState = not spdenabled
+	speedToggle:Set(newState)
 end)
+end)
+
