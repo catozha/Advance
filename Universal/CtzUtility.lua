@@ -214,5 +214,3 @@ BindsTab:Keybind("Toggle Speedhack", Enum.KeyCode.V, function()
 	local newState = not spdenabled
 	speedToggle:Set(newState)
 end)
-end)
-
